@@ -1,0 +1,32 @@
+{
+  "id": "8ad44140-9e97-4edd-ac8c-c140fafad8e7",
+  "name": "Jumping Jacks",
+  "provider": "MHC",
+  "providerId": "z4310m4w25vzuvb0fl7y66l5",
+  "description": "Adding arm circles to your workout routine helps to warm up the shoulders, arms, chest, and back. This is a great exercise to incorporate at the beginning of an upper body workout to prevent injuries and prepare your body for strength training.",
+  "category": "Standing",
+  "duration": 1,
+  "sets": 12,
+  "calories": 0.1,
+  "rest": 30,
+  "isDuration": false,
+  "previewVideo": "https://firebasestorage.googleapis.com/v0/b/mhc-main-project.firebasestorage.app/o/ai_trainer_videos%2Fjumping_jacks.mp4?alt=media&token=9c56a23a-6448-4ba5-81ee-7c12710002e1",
+  "previewImage": "https://cdn.kinestex.com/uploads%2F69977be8-9962-4013-9782-e09417296246_4861876b-a1bb-4db6-9589-02865056c6f1_thumbnail.webp?alt=media&token=af5e6c49-cefd-4348-a1eb-8def8bf26f2c",
+  "targetMuscle": [
+    "Shoulders"
+  ],
+  "tips": [
+    "After you practice that and get comfortable with it rather than simply throwing your arms around, you could refine the circles further by adding rotations to the circles."
+  ],
+  "instructions": [
+    "1. Stand straight with your feet shoulder-width apart.",
+    "2. Raise and extend your arms to the sides without bending the elbows.",
+    "3. Slowly rotate your arms forward, making small circles."
+  ],
+  "commonMistakes": [
+    "Poor balance. Small circles."
+  ],
+  "progress": 0,
+  "diffLevel": "easy",
+  "reps": 12
+}

@@ -1,0 +1,69 @@
+.circle-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.circle-container > * {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.circle {
+    background: rgb(var(--v-theme-surface));
+    border-radius: 50%;
+    border: 10px solid rgb(var(--v-theme-surface));
+    box-shadow: inset 0 3px 3px -2px rgba(0, 0, 0, 0.2),
+        inset 0 3px 4px 0 rgba(0, 0, 0, 0.14),
+        inset 0 1px 8px 0 rgba(0, 0, 0, 0.12);
+}
+
+/*
+ * MAKE WAVE
+ */
+
+:root {
+    --ease-in: cubic-bezier(0.58, 0.42, 1, 1);
+    --ease-out: cubic-bezier(0, 0, 0.42, 0.58);
+}
+
+.wave {
+    opacity: 0.8;
+    height: 30px;
+    transition: top 0.8s;
+    background: url(/images/wave.svg) repeat-x 0;
+    animation-name: fill-wave, wave;
+    animation-duration: 5s, 7s;
+    animation-delay: 0s, 5s;
+    animation-fill-mode: forwards, none;
+    animation-iteration-count: 1, infinite;
+    animation-timing-function: var(--ease-in), var(--ease-out);
+}
+
+.wave:nth-child(2) {
+    animation-duration: 5s, 11s;
+}
+
+.wave:nth-child(3) {
+    animation-duration: 5s, 13s;
+}
+
+.wave-below {
+    bottom: 0;
+    transition: top 0.8s;
+    background-color: #1976D2;
+}
+
+
+@keyframes fill-wave {
+    from {
+        background-position-x: -1200px;
+    }
+}
+
+@keyframes wave {
+    to {
+        background-position-x: 1200px;
+    }
+}

@@ -1,0 +1,391 @@
+{
+  "id": "cuz8DvHxQkbVI9Jfhxg7",
+  "title": "Fitness and Stretch",
+  "provider": "MHC",
+  "duration": 1548,
+  "rest": 30,
+  "calories": 35.94,
+  "previewImage": "https://cdn.kinestex.com/uploads%2Fcuz8DvHxQkbVI9Jfhxg7_1733253067012.webp",
+  "exercises": [
+    {
+      "id": "bbeca4f7-32e3-4cd8-82be-1c58ffeb53ae",
+      "name": "Squats",
+      "providerId": "pw1ps3b3s1pei2d0r44yqhv5",
+      "description": "Squats train all leg muscles: glutes, quadriceps, inner thighs, and lower back.",
+      "category": "Standing",
+      "duration": 30,
+      "sets": 15,
+      "rest": 30,
+      "calories": 0.25,
+      "isDuration": true,
+      "previewVideo": "https://d5fwnk75ex0v3.cloudfront.net/0514.mp4",
+      "previewImage": "https://cdn.kinestex.com/uploads%2F85e59039-c4e0-4b0d-b589-f546f9fe01ba_d43cfa4c-be44-40e3-8bea-bf0bda331a36_thumbnail.webp?alt=media&token=66138fb9-94cf-4b92-99e0-59b0a5f3bda9",
+      "targetMuscle": [
+        "Calves",
+        "Hamstrings",
+        "Quads",
+        "Glutes"
+      ],
+      "tips": [
+        "Do not arch your back. Keep your pelvis back. As you rise up, make a powerful push upward."
+      ],
+      "instructions": [
+        "1. Place your feet shoulder-width apart, keep your hands along your body, knees slightly bent, back flat.",
+        "2. Squat untill your thighs are parallel to the floor and body leaning forward and pelvis pulled back."
+      ],
+      "commonMistakes": [
+        "Squatting too low or too high. Incorrect positioning."
+      ],
+      "progress": 0,
+      "diffLevel": "medium",
+      "reps": 10
+    },
+    {
+      "id": "ffda5ba6-3c16-4424-ad66-ed1853c85f16",
+      "name": "Jumping Jack",
+      "providerId": "z4310m4w25vzuvb0fl7y66l5",
+      "description": "Enter a dynamic, full-body aerobic exercise improving cardiovascular endurance and coordination",
+      "category": "Standing",
+      "duration": 1,
+      "sets": 14,
+      "rest": 30,
+      "calories": 0.9,
+      "isDuration": false,
+      "previewVideo": "https://cdn.kinestex.com/media/videos/compressed/Jumping_Jack_Aygul_compressed.mp4",
+      "previewImage": "https://cdn.kinestex.com/media/videos/thumbnails/Jumping_Jack_Aygul.jpg",
+      "targetMuscle": [
+        "Shoulders",
+        "Calves",
+        "Hamstrings",
+        "Quads"
+      ],
+      "tips": [
+        "Focus on landing softly and keeping your movements controlled. Keep your breathing rhythmic and controlled throughout the exercise. If you're new to jumping jacks, start with a lower number of reps and gradually work your way up."
+      ],
+      "instructions": [
+        "1. Stand upright with your feet together and your arms at your sides.",
+        "2. Jump your feet out to the sides while simultaneously raising your arms above your head.",
+        "3. Your hands should meet above your head as your feet land on the floor.",
+        "4. Jump your feet back together and lower your arms to the starting position."
+      ],
+      "commonMistakes": [
+        "Not landing softly. Letting your knees cave in. Allowing your shoulders to hunch. Not engaging your core."
+      ],
+      "progress": 0,
+      "diffLevel": "medium",
+      "reps": 10
+    },
+    {
+      "id": "4703b984-e322-40dd-aac5-7905db28dc17",
+      "name": "Lunges",
+      "providerId": "f703vpz8k0ja97dk51smfub9",
+      "description": "The exercise is considered one of the most effective and useful exercises for pumping the gluteal muscles.",
+      "category": "Standing",
+      "duration": 21,
+      "sets": 15,
+      "rest": 30,
+      "calories": 0.25,
+      "isDuration": false,
+      "previewVideo": " https://d5fwnk75ex0v3.cloudfront.net/3470.mp4",
+      "previewImage": "https://cdn.kinestex.com/uploads%2F1f64fc6a-8d24-4c21-a63d-2e58e6e0aa22_df65941d-4827-40f0-8c04-04f4f7f7b17c_thumbnail.webp?alt=media&token=daff2b8b-8dc4-4fe2-b90a-010a8e4654d3",
+      "targetMuscle": [
+        "Calves",
+        "Hamstrings",
+        "Quads",
+        "Glutes"
+      ],
+      "tips": [
+        "Tilt your torso straight back. Tense your abs. Do not squeeze your buttocks."
+      ],
+      "instructions": [
+        "1. Stand up straight, legs slightly apart so that the foot, knee, thigh, and shoulders form a straight line.",
+        "2. Step forward and transfer weight to the front leg, hips and shins of both legs to form a right angle.",
+        "3. Then push the heel off the floor and using the gluteus and rear thigh muscles, return to the starting position."
+      ],
+      "commonMistakes": [
+        "Swinging from side to side. Incomplete amplitude."
+      ],
+      "progress": 0,
+      "diffLevel": "medium",
+      "reps": 8
+    },
+    {
+      "id": "1056b164-2f4e-4c55-bbb6-ba26291d469f",
+      "name": "Walk Down to Plank",
+      "providerId": "cw94rrmk1hbmaqhu7j04nafh",
+      "description": "This exercise strengthens and tightens your stomach, abs, posture, arms, and legs, burning a lot of calories.",
+      "category": "Lying",
+      "duration": 25,
+      "sets": 10,
+      "rest": 30,
+      "calories": 0.28,
+      "isDuration": false,
+      "previewVideo": " https://d5fwnk75ex0v3.cloudfront.net/3698.mp4",
+      "previewImage": "https://cdn.kinestex.com/uploads%2Fd747606f-6ac1-4706-a4c1-f50a0cc3d353_b0628f77-9d78-4eb3-a48e-ab99077789a7_thumbnail.webp?alt=media&token=2c05d3a8-6d2b-4621-a4f5-c2138f4e2820",
+      "targetMuscle": [
+        "Calves",
+        "Hamstrings",
+        "Quads",
+        "Shoulders",
+        "Triceps"
+      ],
+      "tips": [
+        "Hold the plank pose for a few seconds. Do the exercise at your optimal pace."
+      ],
+      "instructions": [
+        "1. Stand up straight and bend forward smoothly.",
+        "2. Then use your hands to reach a straight plank position.",
+        "3. Return to the starting position."
+      ],
+      "commonMistakes": [
+        "Backbend. Incomplete amplitude."
+      ],
+      "progress": 0,
+      "diffLevel": "hard",
+      "reps": 6
+    },
+    {
+      "id": "23271d91-68fa-4211-82f8-279b0097824d",
+      "name": "Down Box",
+      "providerId": "sblcj0zx60z2cza4ovnhvxns",
+      "description": "The exercise engages almost all major muscle groups and is a great addition to the previous exercises.",
+      "category": "Standing",
+      "duration": 21,
+      "sets": 15,
+      "rest": 30,
+      "calories": 0.26,
+      "isDuration": false,
+      "previewVideo": "https://cdn.kinestex.com/uploads%2Fcompressed%2F9wLOgOylhSsNgp6uNBPq.mp4",
+      "previewImage": "https://cdn.kinestex.com/uploads%2F21e8649c-325c-4d49-81b4-9ea6966133e5_a61f87d9-897c-48be-a45c-bd8766c0eca0_thumbnail.webp?alt=media&token=d4fdb835-083d-442b-ae16-6301550e81ae",
+      "targetMuscle": [
+        "Calves",
+        "Hamstrings",
+        "Quads",
+        "Glutes",
+        "Shoulders"
+      ],
+      "tips": [
+        "Twist your abs during the punch. Squat until your hips are parallel to the floor."
+      ],
+      "instructions": [
+        "1. Start in a squat position.",
+        "2. Stand up and shift your weight to one leg and strike with the opposite arm.",
+        "3. Then do the same and kick with the another arm."
+      ],
+      "commonMistakes": [
+        "Squatting too low or too high. Small kick amplitude."
+      ],
+      "progress": 0,
+      "diffLevel": "easy",
+      "reps": 8
+    },
+    {
+      "id": "bb836827-0c80-44b8-9c7a-0309a795a1fa",
+      "name": "Squats",
+      "providerId": "pw1ps3b3s1pei2d0r44yqhv5",
+      "description": "Squats train all leg muscles: glutes, quadriceps, inner thighs, and lower back.",
+      "category": "Standing",
+      "duration": 19,
+      "sets": 15,
+      "rest": 30,
+      "calories": 0.25,
+      "isDuration": false,
+      "previewVideo": "https://d5fwnk75ex0v3.cloudfront.net/0514.mp4",
+      "previewImage": "https://cdn.kinestex.com/uploads%2F85e59039-c4e0-4b0d-b589-f546f9fe01ba_d43cfa4c-be44-40e3-8bea-bf0bda331a36_thumbnail.webp?alt=media&token=66138fb9-94cf-4b92-99e0-59b0a5f3bda9",
+      "targetMuscle": [
+        "Calves",
+        "Hamstrings",
+        "Quads",
+        "Glutes"
+      ],
+      "tips": [
+        "Do not arch your back. Keep your pelvis back. As you rise up, make a powerful push upward."
+      ],
+      "instructions": [
+        "1. Place your feet shoulder-width apart, keep your hands along your body, knees slightly bent, back flat.",
+        "2. Squat untill your thighs are parallel to the floor and body leaning forward and pelvis pulled back."
+      ],
+      "commonMistakes": [
+        "Squatting too low or too high. Incorrect positioning."
+      ],
+      "progress": 0,
+      "diffLevel": "medium",
+      "reps": 10
+    },
+    {
+      "id": "e27bfd56-b585-4ecf-a398-ecfe41dcc973",
+      "name": "Jumping Jack",
+      "providerId": "z4310m4w25vzuvb0fl7y66l5",
+      "description": "Enter a dynamic, full-body aerobic exercise improving cardiovascular endurance and coordination",
+      "category": "Standing",
+      "duration": 1,
+      "sets": 20,
+      "rest": 30,
+      "calories": 0.9,
+      "isDuration": false,
+      "previewVideo": "https://cdn.kinestex.com/media/videos/compressed/Jumping_Jack_Aygul_compressed.mp4",
+      "previewImage": "https://cdn.kinestex.com/media/videos/thumbnails/Jumping_Jack_Aygul.jpg",
+      "targetMuscle": [
+        "Shoulders",
+        "Calves",
+        "Hamstrings",
+        "Quads"
+      ],
+      "tips": [
+        "Focus on landing softly and keeping your movements controlled. Keep your breathing rhythmic and controlled throughout the exercise. If you're new to jumping jacks, start with a lower number of reps and gradually work your way up."
+      ],
+      "instructions": [
+        "1. Stand upright with your feet together and your arms at your sides.",
+        "2. Jump your feet out to the sides while simultaneously raising your arms above your head.",
+        "3. Your hands should meet above your head as your feet land on the floor.",
+        "4. Jump your feet back together and lower your arms to the starting position."
+      ],
+      "commonMistakes": [
+        "Not landing softly. Letting your knees cave in. Allowing your shoulders to hunch. Not engaging your core."
+      ],
+      "progress": 0,
+      "diffLevel": "medium",
+      "reps": 10
+    },
+    {
+      "id": "b1ecab7a-fb6d-4380-b620-d37b6b068b08",
+      "name": "Lunges",
+      "providerId": "f703vpz8k0ja97dk51smfub9",
+      "description": "The exercise is considered one of the most effective and useful exercises for pumping the gluteal muscles.",
+      "category": "Standing",
+      "duration": 21,
+      "sets": 15,
+      "rest": 30,
+      "calories": 0.25,
+      "isDuration": false,
+      "previewVideo": " https://d5fwnk75ex0v3.cloudfront.net/3470.mp4",
+      "previewImage": "https://cdn.kinestex.com/uploads%2F1f64fc6a-8d24-4c21-a63d-2e58e6e0aa22_df65941d-4827-40f0-8c04-04f4f7f7b17c_thumbnail.webp?alt=media&token=daff2b8b-8dc4-4fe2-b90a-010a8e4654d3",
+      "targetMuscle": [
+        "Calves",
+        "Hamstrings",
+        "Quads",
+        "Glutes"
+      ],
+      "tips": [
+        "Tilt your torso straight back. Tense your abs. Do not squeeze your buttocks."
+      ],
+      "instructions": [
+        "1. Stand up straight, legs slightly apart so that the foot, knee, thigh, and shoulders form a straight line.",
+        "2. Step forward and transfer weight to the front leg, hips and shins of both legs to form a right angle.",
+        "3. Then push the heel off the floor and using the gluteus and rear thigh muscles, return to the starting position."
+      ],
+      "commonMistakes": [
+        "Swinging from side to side. Incomplete amplitude."
+      ],
+      "progress": 0,
+      "diffLevel": "medium",
+      "reps": 8
+    },
+    {
+      "id": "2232c07c-fb10-4468-854d-000f14a7d906",
+      "name": "Walk Down to Plank",
+      "providerId": "cw94rrmk1hbmaqhu7j04nafh",
+      "description": "This exercise strengthens and tightens your stomach, abs, posture, arms, and legs, burning a lot of calories.",
+      "category": "Lying",
+      "duration": 25,
+      "sets": 10,
+      "calories": 0.28,
+      "rest": 30,
+      "isDuration": false,
+      "previewVideo": " https://d5fwnk75ex0v3.cloudfront.net/3698.mp4",
+      "previewImage": "https://cdn.kinestex.com/uploads%2Fd747606f-6ac1-4706-a4c1-f50a0cc3d353_b0628f77-9d78-4eb3-a48e-ab99077789a7_thumbnail.webp?alt=media&token=2c05d3a8-6d2b-4621-a4f5-c2138f4e2820",
+      "targetMuscle": [
+        "Calves",
+        "Hamstrings",
+        "Quads",
+        "Shoulders",
+        "Triceps"
+      ],
+      "tips": [
+        "Hold the plank pose for a few seconds. Do the exercise at your optimal pace."
+      ],
+      "instructions": [
+        "1. Stand up straight and bend forward smoothly.",
+        "2. Then use your hands to reach a straight plank position.",
+        "3. Return to the starting position."
+      ],
+      "commonMistakes": [
+        "Backbend. Incomplete amplitude."
+      ],
+      "progress": 0,
+      "diffLevel": "hard",
+      "reps": 6
+    },
+    {
+      "id": "0b21f2bf-5e77-4715-8292-706b7d4acc1c",
+      "name": "Down Box",
+      "providerId": "sblcj0zx60z2cza4ovnhvxns",
+      "description": "The exercise engages almost all major muscle groups and is a great addition to the previous exercises.",
+      "category": "Standing",
+      "duration": 21,
+      "sets": 15,
+      "rest": 30,
+      "calories": 0.26,
+      "isDuration": false,
+      "previewVideo": "https://cdn.kinestex.com/uploads%2Fcompressed%2F9wLOgOylhSsNgp6uNBPq.mp4",
+      "previewImage": "https://cdn.kinestex.com/uploads%2F21e8649c-325c-4d49-81b4-9ea6966133e5_a61f87d9-897c-48be-a45c-bd8766c0eca0_thumbnail.webp?alt=media&token=d4fdb835-083d-442b-ae16-6301550e81ae",
+      "targetMuscle": [
+        "Calves",
+        "Hamstrings",
+        "Quads",
+        "Glutes",
+        "Shoulders"
+      ],
+      "tips": [
+        "Twist your abs during the punch. Squat until your hips are parallel to the floor."
+      ],
+      "instructions": [
+        "1. Start in a squat position.",
+        "2. Stand up and shift your weight to one leg and strike with the opposite arm.",
+        "3. Then do the same and kick with the another arm."
+      ],
+      "commonMistakes": [
+        "Squatting too low or too high. Small kick amplitude."
+      ],
+      "progress": 0,
+      "diffLevel": "easy",
+      "reps": 8
+    },
+    {
+      "id": "fd750e08-e8a6-434f-9742-0ab4416b3fe6",
+      "name": "Elbow Cat Cow Pose",
+      "providerId": "luj0yids428tpul7bldhtgv1",
+      "description": "This exercise is great for warming up and stretching your spine, shoulders, and neck, so take your time and focus on moving mindfully through the poses.",
+      "category": "Lying",
+      "duration": 11,
+      "sets": 16,
+      "rest": 30,
+      "calories": 0.07,
+      "isDuration": false,
+      "previewVideo": "https://cdn.kinestex.com/uploads%2Fcompressed%2FFuf8BYeO2KCLqDymd9q1.mp4",
+      "previewImage": "https://cdn.kinestex.com/uploads%2F6623ea87-2ef5-4bfe-ace3-ddba78b86a1f_09f43b61-9a33-4019-8bde-a1ca9faa1ed3_thumbnail.webp?alt=media&token=2e300fb8-0c06-45ac-9dfe-d216c281b9b9",
+      "targetMuscle": [
+        "Shoulders",
+        "Traps",
+        "Lower Back"
+      ],
+      "tips": [
+        "Make sure your elbows are directly under your shoulders and your knees are directly under your hips to maintain a stable base. If you have any pain or discomfort in your wrists or forearms, you can place a blanket or yoga block under your elbows for support."
+      ],
+      "instructions": [
+        "1. Begin on your hands and knees with your wrists directly under your shoulders and your knees directly under your hips.",
+        "2. Lower down onto your forearms so that your elbows are directly under your shoulders.",
+        "3. Take a deep breath in and arch your back, dropping your belly towards the floor and lifting your tailbone towards the ceiling.",
+        "4. As you exhale, round your spine upwards, tucking your chin towards your chest and drawing your navel towards your spine.",
+        "5. When you're finished, release the pose and come back into your hands and knees."
+      ],
+      "commonMistakes": [
+        "Fast tempo. Poor amplitude."
+      ],
+      "progress": 0,
+      "diffLevel": "easy",
+      "reps": 10
+    }
+  ],
+  "description": "Fitness and Stretch"
+}

@@ -1,0 +1,76 @@
+<script setup lang="ts">
+import BubbleProgress from "@/components/atoms/BubbleProgress.vue";
+import type {RepScoreCard} from "@/components/overlays.types.ts";
+import {useQueryConfig} from "@/composables/useQueryConfig";
+import {ref, watch} from "vue";
+
+const chimeAudio = ref<HTMLAudioElement>()
+
+const props = defineProps<RepScoreCard.Props>()
+const emit = defineEmits<RepScoreCard.Events>()
+
+const config = useQueryConfig()
+
+// Watch for rep count changes
+watch(() => props.value, (newValue, oldValue) => {
+    if (newValue <= oldValue) {
+        return;
+    }
+
+    // Play chime sound for each rep
+    const audio = chimeAudio.value!
+    audio.pause()
+    audio.currentTime = 0
+    audio.play()
+
+    // Check if target reps reached
+    if (newValue >= props.target) {
+        setTimeout(() => {
+            emit('complete')
+        }, 500) // Small delay to let the final chime play
+    }
+})
+
+</script>
+
+<template>
+    <v-container fluid class="app d-flex flex-column fill-height">
+        <audio ref="chimeAudio" src="/sounds/success-chime.mp3" volume="1"/>
+        <v-card
+            v-if="config.ui"
+            height="50vw"
+            flat
+            class="container d-flex position-absolute border"
+        >
+            <v-sheet height="50vw" width="50vw" rounded="circle" color="transparent"
+                     class="border-e-sm pa-4" :elevation="1">
+                <BubbleProgress :value="value" :total="target" label="Reps" />
+            </v-sheet>
+            <v-sheet height="50vw" width="50vw" color="transparent"
+                     rounded="circle"
+                     class="d-flex flex-column justify-center align-center">
+                <div class="text-start">
+                    <span class="text-h1 font-weight-bold mr-2 text-high-emphasis">{{ value }}</span>
+                    <span class="text-subtitle-1 font-weight-light text-uppercase text-medium-emphasis">/ {{ target }}</span>
+                </div>
+                <div class="text-body-1 font-weight-light text-uppercase text-medium-emphasis mt-2">Reps</div>
+            </v-sheet>
+        </v-card>
+    </v-container>
+</template>
+
+<style scoped>
+.app {
+    background: #2A7B9B;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(2, 86, 131, 0) 70%, rgba(0, 52, 103, 0.56) 100%);
+}
+
+.container {
+    left: 3px;
+    right: 3px;
+    bottom: 3px;
+    border-radius: 25px;
+    padding: 1px;
+    background-color: rgba(255, 255, 255, 0.19);
+}
+</style>
