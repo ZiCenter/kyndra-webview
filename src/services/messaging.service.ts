@@ -10,25 +10,24 @@ declare global {
 
 export interface Messaging {
     send<E extends keyof MessagingEvents>(event: E, data?: any): void;
-    listen(callback: (event: string, data?: any) => void): void;
 }
 
 class WebMessageChannel implements Messaging {
     private port: MessagePort | null = null;
-    private messageCallback: ((event: string, data?: any) => void) | null = null;
 
-    constructor() {
+    constructor(private readonly messageCallback: (event: string, data?: any) => void) {
         window.addEventListener('message', this.onWindowMessage.bind(this), false);
     }
 
     private onWindowMessage(event: MessageEvent) {
+        // Ignore messages from the same origin (self-sent messages)
+        if (event.source === window) return;
+
         if (event.ports?.[0] != null) this.registerPort(event.ports[0]);
         if (event.data && typeof event.data === 'string') {
             try {
                 const parsed = JSON.parse(event.data);
-                if (parsed.event && this.messageCallback) {
-                    this.messageCallback(parsed.event, parsed.data);
-                }
+                if (parsed.event) this.messageCallback(parsed.event, parsed.data);
             } catch (e) {
                 // Ignore non-JSON messages
             }
@@ -41,19 +40,13 @@ class WebMessageChannel implements Messaging {
         this.port.addEventListener('message', (event) => {
             try {
                 const parsed = JSON.parse(event.data);
-                if (parsed.event && this.messageCallback) {
-                    this.messageCallback(parsed.event, parsed.data);
-                }
+                if (parsed.event) this.messageCallback(parsed.event, parsed.data);
             } catch (e) {
                 console.log("Error parsing port message:", e);
             }
         });
         this.port.start();
         this.send('connected');
-    }
-
-    listen(callback: (event: string, data?: any) => void): void {
-        this.messageCallback = callback;
     }
 
     send<E extends keyof MessagingEvents>(event: E, data: any = null) {
@@ -67,9 +60,8 @@ class WebMessageChannel implements Messaging {
 
 class JavaScriptHandler implements Messaging {
     private static _instance: JavaScriptHandler;
-    private messageCallback: ((event: string, data?: any) => void) | null = null;
 
-    constructor() {
+    constructor(private readonly messageCallback: (event: string, data?: any) => void) {
         // Make this a singleton to ensure only one instance handles the messages
         if (JavaScriptHandler._instance) {
             return JavaScriptHandler._instance;
@@ -86,10 +78,6 @@ class JavaScriptHandler implements Messaging {
         this.send('connected');
     }
 
-    listen(callback: (event: string, data?: any) => void): void {
-        this.messageCallback = callback;
-    }
-
     send<E extends keyof MessagingEvents>(event: E, data: any = null) {
         window.sendKyndraMessage && window.sendKyndraMessage({event, data});
     }
@@ -101,26 +89,13 @@ export class MessageRouter extends TypedEventEmitter<MessagingEvents> implements
     constructor() {
         super();
         this.channels = [
-            new WebMessageChannel(),
-            new JavaScriptHandler(),
+            new WebMessageChannel(this.emit.bind(this) as any),
+            new JavaScriptHandler(this.emit.bind(this) as any),
         ];
-
-        // Set up listeners for all channels to handle inbound commands
-        this.channels.forEach(channel => {
-            channel.listen((event: string, data?: any) => {
-                // Emit the event through the TypedEventEmitter so components can listen to it
-                this.emit(event as keyof MessagingEvents, data);
-            });
-        });
-    }
-
-    listen(callback: (event: string, data?: any) => void): void {
-        // MessageRouter uses the TypedEventEmitter pattern, so this method
-        // can be used for direct callback registration if needed
-        this.channels.forEach(channel => channel.listen(callback));
     }
 
     send<E extends keyof MessagingEvents>(event: E, ...data: Parameters<MessagingEvents[E]>) {
         this.channels.forEach((channel: Messaging) => channel.send(event, data?.[0] ?? null))
+        this.emit(event, ...data);
     }
 }
