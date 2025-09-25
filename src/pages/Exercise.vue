@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import ExerciseView from "@/components/views/ExerciseView.vue";
-import LoaderView from "@/components/views/LoaderView.vue";
+import ExerciseView from "@/components/organisms/ExerciseView.vue";
 import mhcApi from "@/integrations/mhc-api.ts";
 import type {Exercise, RepSummary} from "@/utils/types.ts";
 import {onMounted, ref} from "vue";

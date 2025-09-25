@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import ExerciseView from "@/components/views/ExerciseView.vue";
-import RestView from "@/components/views/RestView.vue";
+import ExerciseView from "@/components/organisms/ExerciseView.vue";
+import RestView from "@/components/organisms/RestView.vue";
 import mhcApi from "@/integrations/mhc-api.ts";
 import {MessageRouter} from "@/services/messaging.service.ts";
 import type {WorkoutSession, SessionSummary} from "@/utils/types.ts";

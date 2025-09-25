@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import RestViewWithResults from "./RestViewWithResults.vue";
-import RestViewWithVideo from "./RestViewWithVideo.vue";
+import RestViewWithResults from "@/components/molecules/RestViewWithResults.vue";
+import RestViewWithVideo from "@/components/molecules/RestViewWithVideo.vue";
 import {useQueryConfig} from "@/composables/useQueryConfig";
 
 defineProps<{

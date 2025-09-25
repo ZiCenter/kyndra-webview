@@ -1,7 +1,7 @@
 import type {ExerciseDto, WorkoutSessionDto} from "@/integrations/mhc-api.dto.ts";
 import workoutSession from "@/assets/json/workout-session.json"
 import exerciseData from "@/assets/json/exercise.json"
-import {getModelData, getModels} from "@/utils/firebase.utils.ts";
+import {getModelData, getModels} from "@/integrations/firebase";
 import type {Exercise, WorkoutSession} from "@/utils/types.ts";
 
 type ApiResponse<T> = {

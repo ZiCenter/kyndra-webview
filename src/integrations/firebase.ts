@@ -4,39 +4,18 @@ import {Firestore, getFirestore, doc, getDoc} from 'firebase/firestore';
 import {type FirebaseStorage, getStorage, getBytes, ref} from 'firebase/storage';
 
 
-let app: FirebaseApp;
-let db: Firestore;
 let storage: FirebaseStorage;
 
 let storageRoot = 'ai_portal_data'
 
-export const createInstance = (config: FirebaseOptions) => {
-    app = initializeApp(config);
-    db = getFirestore(app);
-    storage = getStorage(app);
+const createInstance = (config: FirebaseOptions) => {
+    storage = getStorage(initializeApp(config));
 }
 
 const toString = (buffer: ArrayBuffer) => new TextDecoder().decode(buffer);
 
 export const getModelData = async (id: string) => {
     return toString(await getBytes(ref(storage, `${storageRoot}/models/${id}.json`)));
-}
-
-export const getWorkoutPlan = async (id: string): Promise<WorkoutSession> => {
-    // TODO: Uncomment
-    const workoutSnap = await getDoc(doc(db, storageRoot, id))
-
-    if (!workoutSnap.exists()) {
-        throw new Error(`Workout plan with ID ${id} not found`);
-    }
-
-    const plan = workoutSnap.data() as WorkoutSession;
-
-    const models = await Promise.all(
-        plan.exercises.map((exercise) => getModelData(exercise.id))
-    );
-
-    return {...plan, models}
 }
 
 export const getModels = async (exercises: Pick<Exercise, 'id'>[]) => {
