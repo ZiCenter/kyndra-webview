@@ -2,32 +2,25 @@
 import BubbleProgress from "@/components/atoms/BubbleProgress.vue";
 import type {RepScoreCard} from "@/components/overlays.types.ts";
 import {useQueryConfig} from "@/composables/useQueryConfig";
+import {useChimeAudio} from "@/composables/useAudio";
 import {ref, watch} from "vue";
 
-const chimeAudio = ref<HTMLAudioElement>()
+const chimeAudio = useChimeAudio()
 
 const props = defineProps<RepScoreCard.Props>()
 const emit = defineEmits<RepScoreCard.Events>()
 
 const config = useQueryConfig()
 
-// Watch for rep count changes
 watch(() => props.value, (newValue, oldValue) => {
     if (newValue <= oldValue) {
         return;
     }
 
-    // Play chime sound for each rep
-    const audio = chimeAudio.value!
-    audio.pause()
-    audio.currentTime = 0
-    audio.play()
+    chimeAudio.play()
 
-    // Check if target reps reached
     if (newValue >= props.target) {
-        setTimeout(() => {
-            emit('complete')
-        }, 500) // Small delay to let the final chime play
+        setTimeout(() => emit('complete'), 500)
     }
 })
 
@@ -35,7 +28,6 @@ watch(() => props.value, (newValue, oldValue) => {
 
 <template>
     <v-container fluid class="app d-flex flex-column fill-height">
-        <audio ref="chimeAudio" src="/sounds/success-chime.mp3" volume="1"/>
         <v-card
             v-if="config.ui"
             height="50vw"

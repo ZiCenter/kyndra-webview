@@ -2,10 +2,11 @@
 import BubbleProgress from "@/components/atoms/BubbleProgress.vue";
 import type {TimedScoreCard} from "@/components/overlays.types.ts";
 import {useQueryConfig} from "@/composables/useQueryConfig";
+import {useTimerAudio, useChimeAudio} from "@/composables/useAudio";
 import {computed, onMounted, onUnmounted, ref, watch} from "vue";
 
-const timerAudio = ref<HTMLAudioElement>()
-const chimeAudio = ref<HTMLAudioElement>()
+const timerAudio = useTimerAudio()
+const chimeAudio = useChimeAudio()
 
 const count = ref(0)
 
@@ -24,19 +25,19 @@ const startTimer = () => {
         }
         clearInterval(timer.value)
         timer.value = -1
-        timerAudio.value?.pause()
+        timerAudio.pause()
         emit('complete')
         return;
     }, 1000)
 
-    timerAudio.value?.play()
+    timerAudio.play()
 }
 
 const pauseTimer = () => {
     if (timer.value === -1) return;
     clearInterval(timer.value)
     timer.value = -1
-    timerAudio.value?.pause()
+    timerAudio.pause()
 }
 
 onMounted(() => {
@@ -46,29 +47,22 @@ onMounted(() => {
 onUnmounted(() => pauseTimer())
 
 watch(() => props.isPaused, (isPaused) => {
-    if (isPaused) pauseTimer() else startTimer()
+    if (isPaused) pauseTimer()
+    else startTimer()
 })
 
-const onTimerAudioEnded = () => {
-    setTimeout(() => timerAudio.value?.play(), 250)
-}
 
 watch(() => props.value, (newValue, oldValue) => {
     if (newValue <= oldValue) {
         return;
     }
-    const audio = chimeAudio.value!
-    audio.pause()
-    audio.currentTime = 0
-    audio.play()
+    chimeAudio.play()
 })
 
 </script>
 
 <template>
     <v-container fluid class="app d-flex flex-column fill-height">
-        <audio ref="timerAudio" src="/sounds/tick-tock.mp3" volume="0.4" @ended="onTimerAudioEnded"/>
-        <audio ref="chimeAudio" src="/sounds/success-chime.mp3" volume="1"/>
         <v-card
             v-if="config.ui"
             height="50vw"
