@@ -89,40 +89,6 @@ void dispose() {
 
 ---
 
-## 🎮 4. Remote Control Commands
-
-The Kyndra WebView supports **inbound commands** for controlling workout sessions remotely. Send these commands via the
-`WorkflowController`:
-
-### ✅ Available Commands
-
-| **Command**        | **Description**                                 |
-|--------------------|-------------------------------------------------|
-| `command-pause`    | Pause the current exercise workflow             |
-| `command-resume`   | Resume the paused exercise workflow             |
-| `command-next`     | Skip to the next exercise in the session        |
-| `command-previous` | Go back to the previous exercise in the session |
-
-### ✅ Usage Example
-
-```dart
-final WorkflowController controller = WorkflowController();
-
-// Pause current exercise
-controller.sendCommand('command-pause');
-
-// Resume exercise
-controller.sendCommand('command-resume');
-
-// Navigate to next exercise
-controller.sendCommand('command-next');
-
-// Go back to previous exercise
-controller.sendCommand('command-previous');
-```
-
----
-
 ## 📱 5. Recommended UX Enhancements
 
 * **Keep screen awake**: Use `wakelock_plus` to prevent screen from sleeping during workouts.
@@ -283,15 +249,6 @@ purpose.
 | `calories` | `double`                                        | Total calories burned             |
 | `accuracy` | `double` (0.0 - 1.0)                            | Average pose detection accuracy   |
 
-### 🔄 Session Summary Integration
-
-The session summary functionality has been integrated directly into the `ExerciseView` component, providing the following benefits:
-
-- **Unified Data Flow**: Session summaries are automatically generated and published when exercises complete
-- **Real-time Updates**: Summary data is available immediately upon exercise completion via the `exercise-completed` event
-- **Consistent API**: Both standalone exercise pages and multi-exercise sessions receive the same summary data structure
-- **Automatic Tracking**: Reps, accuracy, calories, and timing are tracked internally and included in the summary without additional configuration
-
 ---
 
 ## 🧠 Event Flow Summary
@@ -301,8 +258,6 @@ The session summary functionality has been integrated directly into the `Exercis
 | `reps`      | `CycleDetected`                              |
 | `errors`    | `KeypointsOufOfFrame`, `AlignmentAdjustment` |
 | `lifecycle` | `KMessage` with optional typed `data`        |
-
----
 
 ---
 
