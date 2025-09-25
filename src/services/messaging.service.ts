@@ -122,6 +122,5 @@ export class MessageRouter extends TypedEventEmitter<MessagingEvents> implements
 
     send<E extends keyof MessagingEvents>(event: E, ...data: Parameters<MessagingEvents[E]>) {
         this.channels.forEach((channel: Messaging) => channel.send(event, data?.[0] ?? null))
-        this.emit(event, ...data);
     }
 }

@@ -26,6 +26,7 @@ onMounted(async () => {
     // Listen for navigation commands
     messaging.on('command-next', () => skipToNext());
     messaging.on('command-previous', () => skipToPrevious());
+    messaging.on('result', onResult)
 })
 
 const onResult = (result: WorkflowResult) => {
@@ -120,7 +121,6 @@ const skipToPrevious = () => {
         :model="currentModel"
         :exercise="currentExercise"
         :count="reps.length"
-        @result="onResult"
         @complete="onExerciseComplete"
     />
 </template>

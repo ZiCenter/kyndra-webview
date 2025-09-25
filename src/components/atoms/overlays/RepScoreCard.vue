@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import BubbleProgress from "@/components/atoms/BubbleProgress.vue";
 import type {RepScoreCard} from "@/components/atoms/overlays/overlays.types.ts";
 import {useQueryConfig} from "@/composables/useQueryConfig.ts";
 import {useChimeAudio} from "@/composables/useAudio.ts";
@@ -31,7 +30,7 @@ watch(() => props.value, (newValue, oldValue) => {
 <template>
     <v-container fluid class="app d-flex flex-column fill-height">
         <v-card v-if="config.ui" color="transparent" flat width="100%" class="position-absolute bottom-0 px-6 mb-6">
-            <v-progress-linear :model-value="percentage" color="blue" class="border rounded-pill" height="60px">
+            <v-progress-linear :model-value="percentage" color="blue" class="bg-white rounded-pill" height="60px">
                 <div class="text-center">
                     <span class="text-h4 font-weight-bold mr-2 text-high-emphasis">{{ value }}</span>
                     <span class="text-h5 font-weight-semibold text-uppercase text-high-emphasis">/ {{ target }}</span>

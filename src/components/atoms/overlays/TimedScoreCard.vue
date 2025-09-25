@@ -70,7 +70,7 @@ watch(() => props.value, (newValue, oldValue) => {
                 <span class="text-h2 font-weight-bold text-high-emphasis">{{ value }}</span>
             </v-sheet>
 
-            <v-progress-linear :model-value="timePercentage" color="blue" class="border rounded-pill" height="60px">
+            <v-progress-linear :model-value="timePercentage" color="blue" class="bg-white rounded-pill" height="60px">
                 <div class="text-center">
                     <span class="text-h4 font-weight-bold mr-2 text-high-emphasis">00:{{ count }}</span>
                 </div>

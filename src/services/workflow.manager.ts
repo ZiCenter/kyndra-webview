@@ -30,7 +30,7 @@ export class WorkflowManager {
             console.error('Error initializing workflow:', error);
             throw error;
         }
-        this.send('exercise-initialized')
+        this.messaging.send('exercise-initialized')
     }
 
     async runPoseVerifier(): Promise<void> {
@@ -46,7 +46,7 @@ export class WorkflowManager {
                 const data: WorkflowResult = await firstValueFrom(verifierWorkflow.run(this.input$).pipe(filter(result => !!result.data)));
                 if (!data.data) return;
                 console.log('Pose aligned, cleaning up verifier');
-                this.send('exercise-aligned');
+                this.messaging.send('exercise-aligned');
             } catch (error) {
                 console.error('Pose verifier error:', error);
                 this.subscription = null;
@@ -78,7 +78,7 @@ export class WorkflowManager {
             .run(this.input$)
             .subscribe({
                 next: (data: WorkflowResult) => {
-                    if (!this.isPaused) this.send('result', data);
+                    if (!this.isPaused) this.messaging.send('result', data);
                 },
                 error: (err: Error) => {
                     console.error('Workflow error:', err);
@@ -96,13 +96,13 @@ export class WorkflowManager {
         this.isPaused = true;
         this.subscription?.unsubscribe();
         this.subscription = null;
-        this.send('exercise-paused');
+        this.messaging.send('exercise-paused');
     }
 
     private resume(): void {
         this.isPaused = false;
         if (this.workflow && this.input$) this.run();
-        this.send('exercise-resumed');
+        this.messaging.send('exercise-resumed');
     }
 
     destroy(): void {
@@ -111,10 +111,6 @@ export class WorkflowManager {
         this.input.destroy();
         this.messaging.removeAllListeners();
 
-        this.send('exercise-destroyed');
-    }
-
-    send<E extends keyof WorkflowEvents>(event: E, ...args: Parameters<WorkflowEvents[E]>) {
-        this.messaging.send(event, ...args);
+        this.messaging.send('exercise-destroyed');
     }
 }

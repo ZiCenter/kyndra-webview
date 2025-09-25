@@ -28,7 +28,6 @@ messaging.on('exercise-aligned', () => {
     status.value = 'countdown'
     canvasKey.value++
 })
-messaging.on('result', (result) => emit('result', result))
 
 onMounted(async () => {
     if (!camera.value?.el) return;
