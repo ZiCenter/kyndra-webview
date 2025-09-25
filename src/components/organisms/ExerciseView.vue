@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import Overlay from "@/components/atoms/Overlay.vue";
-import Camera from "@/components/overlays/Camera.vue";
-import Canvas from "@/components/overlays/Canvas.vue";
-import Pose from "@/components/overlays/Pose.vue";
-import TimedScoreCard from "@/components/overlays/TimedScoreCard.vue";
-import RepScoreCard from "@/components/overlays/RepScoreCard.vue";
-import WorkoutVideo from "@/components/overlays/WorkoutVideo.vue";
+import Camera from "@/components/atoms/overlays/Camera.vue";
+import Canvas from "@/components/atoms/overlays/Canvas.vue";
+import Pose from "@/components/atoms/overlays/Pose.vue";
+import TimedScoreCard from "@/components/atoms/overlays/TimedScoreCard.vue";
+import RepScoreCard from "@/components/atoms/overlays/RepScoreCard.vue";
+import WorkoutVideo from "@/components/atoms/overlays/WorkoutVideo.vue";
 import {MessageRouter} from "@/services/messaging.service.ts";
 import {WorkflowManager} from "@/services/workflow.manager.ts";
 import type {Exercise} from "@/utils/types.ts";

@@ -73,12 +73,14 @@ onUnmounted(() => {
     right: 0;
     object-fit: cover;
     transition: all 0.5s;
+    position: absolute;
 }
 
 #video.thumbnail {
     width: auto;
     height: 250px;
-    margin: 10px 0 0 10px;
+    margin: 40px 20px;
+    border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 

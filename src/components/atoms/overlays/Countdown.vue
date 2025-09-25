@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type {Countdown} from "@/components/overlays.types.ts";
+import type {Countdown} from "@/components/atoms/overlays/overlays.types.ts";
 import { onMounted, ref, watch} from "vue";
 
 const props = defineProps<Countdown.Props>()

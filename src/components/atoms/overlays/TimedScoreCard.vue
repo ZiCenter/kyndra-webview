@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import BubbleProgress from "@/components/atoms/BubbleProgress.vue";
-import type {TimedScoreCard} from "@/components/overlays.types.ts";
-import {useQueryConfig} from "@/composables/useQueryConfig";
-import {useTimerAudio, useChimeAudio} from "@/composables/useAudio";
+import type {TimedScoreCard} from "@/components/atoms/overlays/overlays.types.ts";
+import {useQueryConfig} from "@/composables/useQueryConfig.ts";
+import {useTimerAudio, useChimeAudio} from "@/composables/useAudio.ts";
 import {computed, onMounted, onUnmounted, ref, watch} from "vue";
 
 const timerAudio = useTimerAudio()

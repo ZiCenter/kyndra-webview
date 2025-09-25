@@ -11,7 +11,7 @@ export function useQueryConfig(): WebViewConfig {
 
     return readonly(
         reactive({
-            ui: route.query.ui === 'true',
+            ui: route.query.ui !== 'false',
             showResultsInRest: route.query.showResultsInRest === 'true'
         })
     )

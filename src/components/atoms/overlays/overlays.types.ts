@@ -1,5 +1,5 @@
 import type {ComponentTypeEmits} from "@vue/runtime-core";
-import type WorkoutVideo from "./overlays/WorkoutVideo.vue";
+import type WorkoutVideo from "./WorkoutVideo.vue";
 
 type EmitObjectToFunctionMap<T extends Record<string, any>> = {
     [K in keyof T]: (...args: T[K]) => void;

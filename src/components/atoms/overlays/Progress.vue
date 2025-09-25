@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Progress } from "@/components/overlays.types.ts";
+import type { Progress } from "@/components/atoms/overlays/overlays.types.ts";
 import {computed, onBeforeUnmount, onMounted, ref, watch} from "vue";
 
 const props = defineProps<Progress.Props>()
