@@ -30,8 +30,8 @@ watch(() => props.value, (newValue, oldValue) => {
 
 <template>
     <v-container fluid class="app d-flex flex-column fill-height">
-        <v-card v-if="config.ui" height="60px" flat class="container d-flex align-center position-absolute border mx-6 mb-6">
-            <v-progress-linear :model-value="percentage" color="amber" height="100%">
+        <v-card v-if="config.ui" color="transparent" flat width="100%" class="position-absolute bottom-0 px-6 mb-6">
+            <v-progress-linear :model-value="percentage" color="blue" class="border rounded-pill" height="60px">
                 <div class="text-center">
                     <span class="text-h4 font-weight-bold mr-2 text-high-emphasis">{{ value }}</span>
                     <span class="text-h5 font-weight-semibold text-uppercase text-high-emphasis">/ {{ target }}</span>
@@ -45,14 +45,5 @@ watch(() => props.value, (newValue, oldValue) => {
 .app {
     background: #2A7B9B;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(2, 86, 131, 0) 70%, rgba(0, 52, 103, 0.56) 100%);
-}
-
-.container {
-    left: 3px;
-    right: 3px;
-    bottom: 3px;
-    border-radius: 30px;
-    padding: 1px;
-    background-color: rgba(255, 255, 255, 0.19);
 }
 </style>

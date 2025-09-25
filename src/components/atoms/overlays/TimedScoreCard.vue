@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import BubbleProgress from "@/components/atoms/BubbleProgress.vue";
 import type {TimedScoreCard} from "@/components/atoms/overlays/overlays.types.ts";
 import {useQueryConfig} from "@/composables/useQueryConfig.ts";
 import {useTimerAudio, useChimeAudio} from "@/composables/useAudio.ts";
@@ -15,6 +14,8 @@ const emit = defineEmits<TimedScoreCard.Events>()
 const timer = ref<number>(-1)
 
 const config = useQueryConfig()
+
+const timePercentage = computed(() => count.value / props.duration * 100)
 
 const startTimer = () => {
     if (timer.value !== -1) return;
@@ -63,24 +64,17 @@ watch(() => props.value, (newValue, oldValue) => {
 
 <template>
     <v-container fluid class="app d-flex flex-column fill-height">
-        <v-card
-            v-if="config.ui"
-            height="50vw"
-            flat
-            class="container d-flex position-absolute border"
-        >
-            <v-sheet height="50vw" width="50vw" rounded="circle" color="transparent"
-                     class="border-e-sm pa-4" :elevation="1">
-                <BubbleProgress :value="count" :total="duration" label="Secs"/>
+        <v-card v-if="config.ui" color="transparent" flat width="100%" class="position-absolute bottom-0 px-6 mb-6">
+            <v-sheet height="85px" width="65px" color="white"
+                     class="float-end rounded-lg d-flex justify-center align-center mb-8">
+                <span class="text-h2 font-weight-bold text-high-emphasis">{{ value }}</span>
             </v-sheet>
-            <v-sheet height="50vw" width="50vw" color="transparent"
-                     rounded="circle"
-                     class="d-flex flex-column justify-center align-center">
-                <div class="text-start">
-                    <span class="text-h1 font-weight-bold mr-2">{{ value }}</span>
-                    <span class="text-subtitle-1 font-weight-light text-uppercase">Reps</span>
+
+            <v-progress-linear :model-value="timePercentage" color="blue" class="border rounded-pill" height="60px">
+                <div class="text-center">
+                    <span class="text-h4 font-weight-bold mr-2 text-high-emphasis">00:{{ count }}</span>
                 </div>
-            </v-sheet>
+            </v-progress-linear>
         </v-card>
     </v-container>
 </template>
@@ -91,12 +85,4 @@ watch(() => props.value, (newValue, oldValue) => {
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(2, 86, 131, 0) 70%, rgba(0, 52, 103, 0.56) 100%);
 }
 
-.container {
-    left: 3px;
-    right: 3px;
-    bottom: 3px;
-    border-radius: 25px;
-    padding: 1px;
-    background-color: rgba(255, 255, 255, 0.19);
-}
 </style>
