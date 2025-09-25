@@ -186,16 +186,16 @@ purpose.
 
 > Represent events **within an individual workout unit**. These repeat for each workflow in a session.
 
-| **Event**               | **Payload**       | **Description**                            |
-|-------------------------|-------------------|--------------------------------------------|
-| `exercise-initialized`  | `null`            | Workflow tracking is initialized and ready |
-| `exercise-started`      | `ExercisePayload` | Workout workflow has begun                 |
-| `exercise-aligned`      | `null`            | User pose is properly aligned to start     |
-| `exercise-paused`       | `null`            | Workflow has been paused by user command   |
-| `exercise-resumed`      | `null`            | Workflow has been resumed from pause       |
-| `exercise-completed`    | `SessionSummary`  | Exercise has finished with summary data   |
-| `exercise-destroyed`    | `null`            | Workflow ended, aborted, or transitioned   |
-| `result`                | `WorkflowResult`  | Real-time workout analysis results         |
+| **Event**              | **Payload**       | **Description**                            |
+|------------------------|-------------------|--------------------------------------------|
+| `exercise-initialized` | `null`            | Workflow tracking is initialized and ready |
+| `exercise-started`     | `ExercisePayload` | Workout workflow has begun                 |
+| `exercise-aligned`     | `null`            | User pose is properly aligned to start     |
+| `exercise-paused`      | `null`            | Workflow has been paused by user command   |
+| `exercise-resumed`     | `null`            | Workflow has been resumed from pause       |
+| `exercise-completed`   | `SessionSummary`  | Exercise has finished with summary data    |
+| `exercise-destroyed`   | `null`            | Workflow ended, aborted, or transitioned   |
+| `result`               | `WorkflowResult`  | Real-time workout analysis results         |
 
 ---
 
@@ -215,16 +215,17 @@ purpose.
 
 #### 📦 `ExercisePayload` Payload
 
-> **Note**: Used for `exercise-started` and `session-next` events. The `exercise-completed` event now uses `SessionSummary` instead.
+> **Note**: Used for `exercise-started` and `session-next` events. The `exercise-completed` event now uses
+`SessionSummary` instead.
 
-| **Field**  | **Type**              | **Description**                    |
-|------------|----------------------|------------------------------------|
-| `id`       | `String`             | Identifier for the exercise        |
-| `name`     | `String`             | Name of the exercise               |
-| `type`     | `'reps' \| 'time'`   | Exercise type (reps or time-based) |
-| `target`   | `number`             | Target reps or duration            |
-| `rest`     | `number`             | Rest time after exercise           |
-| `videoUrl` | `String`             | URL for exercise demonstration     |
+| **Field**  | **Type**           | **Description**                    |
+|------------|--------------------|------------------------------------|
+| `id`       | `String`           | Identifier for the exercise        |
+| `name`     | `String`           | Name of the exercise               |
+| `type`     | `'reps' \| 'time'` | Exercise type (reps or time-based) |
+| `target`   | `number`           | Target reps or duration            |
+| `rest`     | `number`           | Rest time after exercise           |
+| `videoUrl` | `String`           | URL for exercise demonstration     |
 
 ---
 
@@ -239,7 +240,8 @@ purpose.
 
 #### 🔸 `SessionSummary`
 
-> **Important**: This payload is now used for both `exercise-completed` events and within `SessionCompleted` summaries, providing consistent summary data across the application.
+> **Important**: This payload is now used for both `exercise-completed` events and within `SessionCompleted` summaries,
+> providing consistent summary data across the application.
 
 | **Field**  | **Type**                                        | **Description**                   |
 |------------|-------------------------------------------------|-----------------------------------|
