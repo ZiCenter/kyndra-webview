@@ -12,7 +12,7 @@ export type WorkflowEvents = {
     'exercise-started': (data: ExercisePayload) => void;
     'exercise-destroyed': () => void;
     'exercise-aligned': () => void;
-    'exercise-completed': (data: ExercisePayload) => void;
+    'exercise-completed': (data: SessionSummary) => void;
     'exercise-paused': () => void;
     'exercise-resumed': () => void;
 }

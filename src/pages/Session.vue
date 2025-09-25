@@ -6,7 +6,6 @@ import {MessageRouter} from "@/services/messaging.service.ts";
 import type {WorkoutSession, SessionSummary} from "@/utils/types.ts";
 import {computed, inject, onMounted, ref} from "vue";
 import {useRoute} from "vue-router";
-import {WorkflowResult, CycleDetected} from "@zicenter/kyndra";
 
 const route = useRoute()
 
@@ -14,7 +13,6 @@ const sessionData = ref<WorkoutSession>()
 
 const status = ref<'workout' | 'rest'>('workout')
 const index = ref<number>(0)
-const reps = ref<SessionSummary['reps']>([])
 const summaries = ref<SessionSummary[]>([])
 
 const messaging = inject<MessageRouter>('messaging')!
@@ -26,35 +24,24 @@ onMounted(async () => {
     // Listen for navigation commands
     messaging.on('command-next', () => skipToNext());
     messaging.on('command-previous', () => skipToPrevious());
-    messaging.on('result', onResult)
+    messaging.on('exercise-completed', onExerciseCompleted)
 })
 
-const onResult = (result: WorkflowResult) => {
-    if (!result.data || result.data.__type !== 'CycleDetected') return;
-    const data = result.data! as CycleDetected;
-    reps.value.push({score: data.score, states: data.stateScores});
+const onExerciseCompleted = (summary: SessionSummary) => {
+    summaries.value.push(summary)
+
+    if (isLast.value) {
+        messaging.send('session-completed', {status: 'completed', summary: summaries.value})
+        return;
+    }
+    status.value = 'rest'
 }
 
 const onRestComplete = () => {
     index.value++;
     status.value = 'workout'
-    reps.value = []
     messaging.send('session-next', currentExercise.value!!)
 }
-
-const addSummary = () => {
-    summaries.value.push({
-        id: currentExercise.value?.id || '',
-        reps: reps.value,
-        time: currentExercise.value?.target || 0,
-        calories: calories.value,
-        accuracy: accuracy.value,
-    })
-}
-
-const accuracy = computed(() => reps.value.reduce((a, b) => a + b.score, 0) / reps.value.length)
-
-const calories = computed(() => (currentExercise.value?.calories || 0) * reps.value.length)
 
 const isLast = computed(() => sessionData.value ? index.value >= sessionData.value.models.length - 1 : false)
 
@@ -64,26 +51,11 @@ const currentModel = computed(() => sessionData.value ? sessionData.value.models
 
 const next = computed(() => sessionData.value ? sessionData.value.exercises[index.value + 1] : undefined)
 
-const onExerciseComplete = () => {
-    addSummary()
-    if (isLast.value) {
-        messaging.send('session-completed', {status: 'completed', summary: summaries.value})
-        return;
-    }
-    status.value = 'rest'
-}
-
 const skipToNext = () => {
     if (isLast.value) return;
 
-    // If currently in workout, add current progress to summary before skipping
-    if (status.value === 'workout') {
-        addSummary();
-    }
-
     index.value++;
     status.value = 'workout';
-    reps.value = [];
     messaging.send('session-skipped-to-next');
     messaging.send('session-next', currentExercise.value!!);
 }
@@ -98,10 +70,11 @@ const skipToPrevious = () => {
 
     index.value--;
     status.value = 'workout';
-    reps.value = [];
     messaging.send('session-skipped-to-previous');
     messaging.send('session-next', currentExercise.value!!);
 }
+
+const currentSummary = computed(() => summaries.value[summaries.value.length - 1] || { reps: [], accuracy: 0, calories: 0 })
 </script>
 
 <template>
@@ -110,9 +83,9 @@ const skipToPrevious = () => {
         :duration="currentExercise?.rest || 0"
         :next-name="next?.name"
         :next-video-url="next?.videoUrl"
-        :reps="reps.length"
-        :accuracy="accuracy"
-        :calories="calories"
+        :reps="currentSummary.reps.length"
+        :accuracy="currentSummary.accuracy"
+        :calories="currentSummary.calories"
         @complete="onRestComplete"
     />
     <ExerciseView
@@ -120,8 +93,7 @@ const skipToPrevious = () => {
         :key="index"
         :model="currentModel"
         :exercise="currentExercise"
-        :count="reps.length"
-        @complete="onExerciseComplete"
+        :count="0"
     />
 </template>
 

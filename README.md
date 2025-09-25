@@ -227,7 +227,7 @@ purpose.
 | `exercise-aligned`      | `null`            | User pose is properly aligned to start     |
 | `exercise-paused`       | `null`            | Workflow has been paused by user command   |
 | `exercise-resumed`      | `null`            | Workflow has been resumed from pause       |
-| `exercise-completed`    | `ExercisePayload` | Exercise has finished                      |
+| `exercise-completed`    | `SessionSummary`  | Exercise has finished with summary data   |
 | `exercise-destroyed`    | `null`            | Workflow ended, aborted, or transitioned   |
 | `result`                | `WorkflowResult`  | Real-time workout analysis results         |
 
@@ -248,6 +248,8 @@ purpose.
 ---
 
 #### 📦 `ExercisePayload` Payload
+
+> **Note**: Used for `exercise-started` and `session-next` events. The `exercise-completed` event now uses `SessionSummary` instead.
 
 | **Field**  | **Type**              | **Description**                    |
 |------------|----------------------|------------------------------------|
@@ -271,6 +273,8 @@ purpose.
 
 #### 🔸 `SessionSummary`
 
+> **Important**: This payload is now used for both `exercise-completed` events and within `SessionCompleted` summaries, providing consistent summary data across the application.
+
 | **Field**  | **Type**                                        | **Description**                   |
 |------------|-------------------------------------------------|-----------------------------------|
 | `id`       | `String`                                        | ID of the individual workflow     |
@@ -278,6 +282,15 @@ purpose.
 | `time`     | `int`                                           | Duration of workflow (ms or sec)  |
 | `calories` | `double`                                        | Total calories burned             |
 | `accuracy` | `double` (0.0 - 1.0)                            | Average pose detection accuracy   |
+
+### 🔄 Session Summary Integration
+
+The session summary functionality has been integrated directly into the `ExerciseView` component, providing the following benefits:
+
+- **Unified Data Flow**: Session summaries are automatically generated and published when exercises complete
+- **Real-time Updates**: Summary data is available immediately upon exercise completion via the `exercise-completed` event
+- **Consistent API**: Both standalone exercise pages and multi-exercise sessions receive the same summary data structure
+- **Automatic Tracking**: Reps, accuracy, calories, and timing are tracked internally and included in the summary without additional configuration
 
 ---
 

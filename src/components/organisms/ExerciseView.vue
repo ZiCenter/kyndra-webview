@@ -8,21 +8,26 @@ import RepScoreCard from "@/components/atoms/overlays/RepScoreCard.vue";
 import WorkoutVideo from "@/components/atoms/overlays/WorkoutVideo.vue";
 import {MessageRouter} from "@/services/messaging.service.ts";
 import {WorkflowManager} from "@/services/workflow.manager.ts";
-import type {Exercise} from "@/utils/types.ts";
+import type {Exercise, RepSummary, SessionSummary} from "@/utils/types.ts";
 import {computed, inject, onMounted, onUnmounted, ref, useTemplateRef, watch} from "vue";
-import {WorkflowResult, PoseInput} from "@zicenter/kyndra";
+import {WorkflowResult, PoseInput, CycleDetected} from "@zicenter/kyndra";
 
 const messaging = inject<MessageRouter>('messaging')!
 const manager = new WorkflowManager(messaging, inject<PoseInput>('input')!)
 
 const props = defineProps<{ model: string, exercise: Exercise, count: number, isPaused?: boolean }>()
-const emit = defineEmits<{ ready: [], result: [WorkflowResult], complete: [] }>()
+const emit = defineEmits<{ ready: [], result: [WorkflowResult], complete: [SessionSummary] }>()
 
 const camera = useTemplateRef<{ el: HTMLVideoElement }>('camera')
 
 const showCanvas = ref(false)
 const canvasKey = ref(0)
 const status = ref<'initializing'|'aligning'|'countdown'|'started'>('initializing')
+
+const reps = ref<RepSummary[]>([])
+
+const accuracy = computed(() => reps.value.length > 0 ? reps.value.reduce((a, b) => a + b.score, 0) / reps.value.length : 0)
+const calories = computed(() => (props.exercise.calories || 0) * reps.value.length)
 
 messaging.on('exercise-aligned', () => {
     status.value = 'countdown'
@@ -35,9 +40,26 @@ onMounted(async () => {
     await manager.setVideo(camera.value.el!);
     status.value = 'aligning'
     await manager.runPoseVerifier();
+    messaging.on('result', onResult)
 })
 
 onUnmounted(() => manager.destroy())
+
+const onResult = (result: WorkflowResult) => {
+    if (!result.data || result.data.__type !== 'CycleDetected') return;
+    const data = result.data! as CycleDetected;
+    reps.value.push({score: data.score, states: data.stateScores});
+}
+
+const createSessionSummary = (): SessionSummary => {
+    return {
+        id: props.exercise.id,
+        reps: reps.value,
+        time: props.exercise.target,
+        calories: calories.value,
+        accuracy: accuracy.value,
+    }
+}
 
 const onCountdownComplete = () => {
     status.value = 'started';
@@ -47,8 +69,10 @@ const onCountdownComplete = () => {
 }
 
 const onExerciseComplete = () => {
-    messaging.send('exercise-completed', props.exercise)
-    emit('complete')
+    const summary = createSessionSummary()
+
+    messaging.send('exercise-completed', summary)
+    emit('complete', summary)
 }
 
 const context = computed(() => JSON.parse(props.model).__c || {})
