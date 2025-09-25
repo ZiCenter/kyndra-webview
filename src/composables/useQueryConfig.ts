@@ -3,7 +3,6 @@ import {useRoute} from 'vue-router'
 
 interface WebViewConfig {
     ui: boolean
-    showResultsInRest: boolean
 }
 
 export function useQueryConfig(): WebViewConfig {
@@ -12,7 +11,6 @@ export function useQueryConfig(): WebViewConfig {
     return readonly(
         reactive({
             ui: route.query.ui !== 'false',
-            showResultsInRest: route.query.showResultsInRest === 'true'
         })
     )
 }

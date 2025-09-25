@@ -19,7 +19,6 @@ declare module 'vue' {
     Progress: typeof import('./src/components/atoms/overlays/Progress.vue')['default']
     RepScoreCard: typeof import('./src/components/atoms/overlays/RepScoreCard.vue')['default']
     RestView: typeof import('./src/components/organisms/RestView.vue')['default']
-    RestViewWithResults: typeof import('./src/components/molecules/RestViewWithResults.vue')['default']
     RestViewWithVideo: typeof import('./src/components/molecules/RestViewWithVideo.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
