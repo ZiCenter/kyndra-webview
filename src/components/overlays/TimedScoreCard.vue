@@ -2,7 +2,7 @@
 import BubbleProgress from "@/components/atoms/BubbleProgress.vue";
 import type {TimedScoreCard} from "@/components/overlays.types.ts";
 import {useQueryConfig} from "@/composables/useQueryConfig";
-import {computed, onMounted, ref, watch} from "vue";
+import {computed, onMounted, onUnmounted, ref, watch} from "vue";
 
 const timerAudio = ref<HTMLAudioElement>()
 const chimeAudio = ref<HTMLAudioElement>()
@@ -15,18 +15,38 @@ const timer = ref<number>(-1)
 
 const config = useQueryConfig()
 
-onMounted(() => {
+const startTimer = () => {
+    if (timer.value !== -1) return;
     timer.value = setInterval(() => {
-        if (count.value >= props.duration) {
-            clearInterval(timer.value)
-            timerAudio.value?.pause()
-            emit('complete')
+        if (count.value < props.duration) {
+            count.value++
             return;
         }
-        count.value++
+        clearInterval(timer.value)
+        timer.value = -1
+        timerAudio.value?.pause()
+        emit('complete')
+        return;
     }, 1000)
 
     timerAudio.value?.play()
+}
+
+const pauseTimer = () => {
+    if (timer.value === -1) return;
+    clearInterval(timer.value)
+    timer.value = -1
+    timerAudio.value?.pause()
+}
+
+onMounted(() => {
+    if (!props.isPaused) startTimer()
+})
+
+onUnmounted(() => pauseTimer())
+
+watch(() => props.isPaused, (isPaused) => {
+    if (isPaused) pauseTimer() else startTimer()
 })
 
 const onTimerAudioEnded = () => {
@@ -57,7 +77,7 @@ watch(() => props.value, (newValue, oldValue) => {
         >
             <v-sheet height="50vw" width="50vw" rounded="circle" color="transparent"
                      class="border-e-sm pa-4" :elevation="1">
-                <BubbleProgress :value="count" :total="duration" label="Secs" />
+                <BubbleProgress :value="count" :total="duration" label="Secs"/>
             </v-sheet>
             <v-sheet height="50vw" width="50vw" color="transparent"
                      rounded="circle"

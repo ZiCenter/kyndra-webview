@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import Overlay from "@/components/atoms/Overlay.vue";
-import {asyncComponents} from "@/components/overlays";
-import type {OverlayConfig} from "@/components/overlays.types.ts";
 import Camera from "@/components/overlays/Camera.vue";
 import Canvas from "@/components/overlays/Canvas.vue";
 import Pose from "@/components/overlays/Pose.vue";
@@ -17,7 +15,7 @@ import {WorkflowResult, PoseInput} from "@zicenter/kyndra";
 const messaging = inject<MessageRouter>('messaging')!
 const manager = new WorkflowManager(messaging, inject<PoseInput>('input')!)
 
-const props = defineProps<{ model: string, exercise: Exercise, count: number, overlays?: OverlayConfig[], isPaused?: boolean }>()
+const props = defineProps<{ model: string, exercise: Exercise, count: number, isPaused?: boolean }>()
 const emit = defineEmits<{ ready: [], result: [WorkflowResult], complete: [] }>()
 
 const camera = useTemplateRef<{ el: HTMLVideoElement }>('camera')
@@ -97,12 +95,6 @@ const mask = computed(() => context.value?.referenceSilhouette)
                 :is-paused="isPaused"
                 @complete="onExerciseComplete"
             />
-        </Overlay>
-
-        <Overlay v-if="overlays" v-for="(overlay, index) in overlays" :key="index">
-            <KeepAlive>
-                <component :is="asyncComponents[overlay.name]" v-bind="overlay.props" v-on="overlay.events"/>
-            </KeepAlive>
         </Overlay>
     </v-container>
 </template>

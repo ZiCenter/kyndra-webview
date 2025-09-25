@@ -64,6 +64,7 @@ export namespace TimedScoreCard {
     export type Props = {
         value: number;
         duration: number;
+        isPaused?: boolean;
     }
 
     export type Events = {
